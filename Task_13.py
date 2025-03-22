@@ -5,7 +5,7 @@ def int_to_roman(num):
     ]
     result=""
     for roman, arabic in roman_numbers:
-        while num>arabic:
+        while num>=arabic:
             result+=roman
             num-=arabic
     return result
