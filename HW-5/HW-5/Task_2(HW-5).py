@@ -3,6 +3,19 @@ class Node:
         self.data = data
         self.next = None
 
+class QueueIterator:
+    def __init__(self, queue):
+        self.current_node = queue._first_node
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current_node is None:
+            raise StopIteration
+        data = self.current_node.data
+        self.current_node = self.current_node.next
+        return data
 class Queue:
     def __init__(self):
         self._first_node = None
@@ -50,11 +63,17 @@ class Queue:
                 current_node = current_node.next
             print("END")
 
+    def __iter__(self):
+        return QueueIterator(self)
+
+
 queue = Queue()
 queue.enqueue(5)
 queue.enqueue(6)
 queue.enqueue(7)
 queue.enqueue(8)
+for i in queue:
+    print(i)
 
 print(queue.front())
 queue.display()

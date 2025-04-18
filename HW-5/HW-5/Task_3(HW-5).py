@@ -4,7 +4,19 @@ class Node:
         self.next = None
         self.prev = None
 
+class LinkedListIterator:
+    def __init__(self, linkedlist):
+        self.current_node = linkedlist.head_node
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current_node is None:
+            raise StopIteration
+        data = self.current_node.data
+        self.current_node = self.current_node.next
+        return data
 class LinkedList:
     def __init__(self):
         self.head_node = None
@@ -102,6 +114,9 @@ class LinkedList:
     def size(self):
         return self.size
 
+    def __iter__(self):
+        return LinkedListIterator(self)
+
 linked_list = LinkedList()
 
 linked_list.append(1)
@@ -109,8 +124,10 @@ linked_list.append(2)
 linked_list.append(3)
 linked_list.append(4)
 linked_list.insert(1, 4)
+for item in linked_list:
+    print(item)
 
 linked_list.display()
-linked_list.delete(7)
-linked_list.display()
 linked_list.find(7)
+
+
