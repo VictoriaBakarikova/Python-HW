@@ -4,6 +4,21 @@ class Node:
         self.next = None
 
 
+class StackIterator:
+    def __init__(self, stack):
+        self.current_node = stack._top_node
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current_node is None:
+            raise StopIteration
+        data = self.current_node.data
+        self.current_node = self.current_node.next
+        return data
+
+
 class Stack:
     def __init__(self):
         self._top_node = None
@@ -42,6 +57,9 @@ class Stack:
             current_node = current_node.next
         print("Stack:", ", ".join(map(str, current_nodes)))
 
+    def __iter__(self):
+        return StackIterator(self)
+
 
 stack = Stack()
 stack.push(23)
@@ -54,3 +72,6 @@ stack.display()
 print(stack.pop())
 print(stack.pop())
 print(stack.peek())
+
+for item in stack:
+    print(item)
