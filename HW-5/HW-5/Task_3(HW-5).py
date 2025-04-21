@@ -41,7 +41,7 @@ class LinkedList:
             self.tail_node = new_node
         else:
             self.head_node.prev = new_node
-            new_node.prev = self.head_node
+            new_node.next = self.head_node
             self.head_node = new_node
         self.size += 1
 
