@@ -4,6 +4,7 @@ class Node:
         self.next = None
         self.prev = None
 
+
 class LinkedListIterator:
     def __init__(self, linkedlist):
         self.current_node = linkedlist.head_node
@@ -17,6 +18,8 @@ class LinkedListIterator:
         data = self.current_node.data
         self.current_node = self.current_node.next
         return data
+
+
 class LinkedList:
     def __init__(self):
         self.head_node = None
@@ -47,7 +50,7 @@ class LinkedList:
 
     def insert(self, item, i):
         if i < 0 or i > self.size:
-            raise IndexError('Index out of range')
+            raise IndexError("Index out of range")
         if i == 0:
             self.prepend(item)
         elif i == self.size:
@@ -105,7 +108,7 @@ class LinkedList:
 
     def __getitem__(self, i):
         if i < 0 or i >= self.size:
-            raise IndexError('Index out of range')
+            raise IndexError("Index out of range")
         current_node = self.head_node
         for _ in range(i):
             current_node = current_node.next
@@ -116,6 +119,7 @@ class LinkedList:
 
     def __iter__(self):
         return LinkedListIterator(self)
+
 
 linked_list = LinkedList()
 
@@ -129,5 +133,3 @@ for item in linked_list:
 
 linked_list.display()
 linked_list.find(7)
-
-

@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
+
 class QueueIterator:
     def __init__(self, queue):
         self.current_node = queue._first_node
@@ -16,6 +17,8 @@ class QueueIterator:
         data = self.current_node.data
         self.current_node = self.current_node.next
         return data
+
+
 class Queue:
     def __init__(self):
         self._first_node = None
@@ -34,7 +37,7 @@ class Queue:
 
     def dequeue(self):
         if self._first_node is None:
-            raise IndexError('Queue is empty')
+            raise IndexError("Queue is empty")
         dequeued_data = self._first_node.data
         self._first_node = self._first_node.next
         if self._first_node is None:
@@ -44,7 +47,7 @@ class Queue:
 
     def front(self):
         if self._first_node is None:
-            raise IndexError('Queue is empty')
+            raise IndexError("Queue is empty")
         return self._first_node.data
 
     def size(self):
@@ -55,7 +58,7 @@ class Queue:
 
     def display(self):
         if self._first_node is None:
-            print('Queue is empty')
+            print("Queue is empty")
         else:
             current_node = self._first_node
             while current_node:
@@ -80,5 +83,3 @@ queue.display()
 print(queue.size())
 queue.is_empty()
 print(queue.dequeue())
-
-

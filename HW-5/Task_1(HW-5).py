@@ -32,7 +32,7 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            raise IndexError('Stack is empty')
+            raise IndexError("Stack is empty")
         removed_item = self._top_node.data
         self._top_node = self._top_node.next
         self._size -= 1
@@ -40,7 +40,7 @@ class Stack:
 
     def peek(self):
         if self.is_empty():
-            raise IndexError('Stack is empty')
+            raise IndexError("Stack is empty")
         return self._top_node.data
 
     def is_empty(self):
