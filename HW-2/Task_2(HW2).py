@@ -3,7 +3,9 @@ numbers = user_input.split()
 
 uniq_numbers = set(numbers)
 
-repeated_numbers = set([number for number in numbers if numbers.count(number) > 1])
+repeated_numbers = set(
+    [number for number in numbers if numbers.count(number) > 1]
+)
 
 even_numbers = []
 odd_numbers = []
@@ -21,7 +23,11 @@ for number in numbers:
 negative_numbers = set([number for number in numbers if float(number) < 0])
 
 float_numbers = set(
-    [float(number) for number in numbers if float(number) != int(float(number))]
+    [
+        float(number)
+        for number in numbers
+        if float(number) != int(float(number))
+    ]
 )
 
 sum_of_aliquot_numbers = sum(
