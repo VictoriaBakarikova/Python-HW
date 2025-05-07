@@ -27,9 +27,7 @@ class Client:
         del self.accounts[currency]
 
     def get_total_balance(self):
-        total_balance = sum(
-            account.balance for account in self.accounts.values()
-        )
+        total_balance = sum(account.balance for account in self.accounts.values())
         return total_balance
 
 
@@ -134,12 +132,8 @@ def terminal_interface(bank):
                 print(f"Error: {e}")
 
         elif choice == "6":
-            donate_account = input(
-                "Enter the currency you want to transfer from: "
-            )
-            recipient_account = input(
-                "enter the currency you want to convert to: "
-            )
+            donate_account = input("Enter the currency you want to transfer from: ")
+            recipient_account = input("enter the currency you want to convert to: ")
             try:
                 amount = float(input("Input the amount to transfer: "))
                 client.accounts[donate_account].transfer(
@@ -155,9 +149,7 @@ def terminal_interface(bank):
             file_name = f"{client_id}_summary.txt"
             try:
                 with open(file_name, "w") as file:
-                    file.write(
-                        f"Account statement for client with ID: {client_id}\n"
-                    )
+                    file.write(f"Account statement for client with ID: {client_id}\n")
                     total_balance = sum(
                         account.balance for account in client.accounts.values()
                     )
@@ -166,9 +158,7 @@ def terminal_interface(bank):
                             f"Account in currency {currency}: balance: {account.balance}\n"
                         )
                     file.write(f"Total balance: {total_balance}\n")
-                print(
-                    "the account statement has been saved to file {file_name}"
-                )
+                print("the account statement has been saved to file {file_name}")
             except Exception as e:
                 print(f"Error: {e}")
 
