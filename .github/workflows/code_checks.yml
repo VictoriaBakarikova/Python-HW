@@ -28,14 +28,6 @@ jobs:
       - name: Run isort (auto-format)
         run: isort .
 
-      - name: Commit formatted code
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Automatically formatted code with Black & Isort"
-          git push
-
       - name: Run flake8 (ignore E203, max line length 150)
         run: flake8 --max-line-length=150 --ignore=E203 .
 
