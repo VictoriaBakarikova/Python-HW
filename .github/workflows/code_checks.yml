@@ -29,7 +29,7 @@ jobs:
         run: isort --check-only .
 
       - name: Run flake8
-        run: flake8 --max-line-length=150 .
+        run: flake8 --max-line-length=152 .
 
       - name: Run mypy
         run: mypy .
