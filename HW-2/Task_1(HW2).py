@@ -2,8 +2,8 @@ import re
 
 str_input = input("Введите строку: ")
 words = re.split(r"[ ,.]+", str_input)
-word_count = {}
-word_set = {word.lower for word in words if word.strip()}
+word_count: dict[str, int] = {}
+word_set = {word.lower() for word in words if word.strip()}
 
 for word in words:
     word = word.lower()

@@ -9,12 +9,13 @@ even_numbers = []
 odd_numbers = []
 for number in numbers:
     try:
-        if float(number).is_integer():
-            number = int(float(number))
-            if int(number) % 2 == 0:
-                even_numbers.append(number)
+        num = float(number)
+        if num.is_integer():
+            num = int(num)
+            if num % 2 == 0:
+                even_numbers.append(num)
             else:
-                odd_numbers.append(number)
+                odd_numbers.append(num)
     except ValueError:
         print("Skip float number")
 
