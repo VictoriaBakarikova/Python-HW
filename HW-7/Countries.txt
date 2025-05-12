@@ -1,4 +1,17 @@
+<<<<<<< Updated upstream
 Germany
 Belarus
 India
 Canada
+=======
+EquRussia
+United States
+China
+Brazil
+Australia
+Argentina
+Kazakhstan
+Canada
+
+
+>>>>>>> Stashed changes
