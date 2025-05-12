@@ -17,6 +17,14 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v35
 
+      - name: Install dependencies
+        run: |
+          pip install black isort flake8 mypy
+
+      - name: Run Black format check
+        run: |
+          black --check .github/workflows/code_checks.yml
+
       - name: Run black
         run: black --check ${{ steps.changed-files.outputs.all_changed_files }}
 
