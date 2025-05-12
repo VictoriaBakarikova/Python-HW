@@ -1,8 +1,9 @@
-import requests
 import csv
-import time
-from bs4 import BeautifulSoup
 import re
+import time
+
+import requests
+from bs4 import BeautifulSoup
 
 
 def get_country_info(country_name):
