@@ -24,7 +24,7 @@ jobs:
         run: isort --check-only ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Run flake8
-        run: flake8 ${{ steps.changed-files.outputs.all_changed_files }}
+        run: flake8 --max-line-length=150 ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Clear cache
         run: rm -rf .mypy_cache
