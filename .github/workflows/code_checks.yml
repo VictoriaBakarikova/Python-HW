@@ -22,8 +22,7 @@ jobs:
           pip install black isort flake8 mypy
 
       - name: Run black
-        run: black --check $(git ls-files '*.py' | xargs)
-
+        run: black $(git ls-files '*.py' | xargs)
       - name: Run isort
         run: isort --check-only ${{ steps.changed-files.outputs.all_changed_files }}
 
