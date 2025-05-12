@@ -1,5 +1,6 @@
-import time
 import functools
+import time
+
 
 def timing(func):
     @functools.wraps(func)
@@ -10,5 +11,5 @@ def timing(func):
         time_of_work = (end - start) * 1000
         print(f"It took {time_of_work:.2f} ms")
         return result
-    return wrapper
 
+    return wrapper
