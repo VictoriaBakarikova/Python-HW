@@ -2,34 +2,32 @@ name: Code Quality Checks
 
 on:
   pull_request:
+    branches:
+      - main
 
 jobs:
-  linting:
-    name: Run code quality checks
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install black isort flake8 mypy
+      - name: Run black
+        run: black --check ${{ steps.changed-files.outputs.all_changed_files }}
 
-      - name: Run black (auto-format)
-        run: black .
+      - name: Run isort
+        run: isort --check-only ${{ steps.changed-files.outputs.all_changed_files }}
 
-      - name: Run isort (auto-format)
-        run: isort .
+      - name: Run flake8
+        run: flake8 ${{ steps.changed-files.outputs.all_changed_files }}
 
-      - name: Run flake8 (max line length 150, ignore E203, W503)
-        run: flake8 --max-line-length=150 --ignore=E203,W503 .
+      - name: Clear cache
+        run: rm -rf .mypy_cache
 
       - name: Run mypy
-        run: mypy .
+        run: mypy ${{ steps.changed-files.outputs.all_changed_files }}
