@@ -1,5 +1,5 @@
-import time
 import functools
+import time
 import warnings
 
 
@@ -12,7 +12,8 @@ def warn_if_slow(_func=None, *, threshold=1.0):
             elapsed_time = time.perf_counter() - start_time
             if elapsed_time > threshold:
                 warnings.warn(
-                    f"Warning: {func.__name__} function took {elapsed_time:.2f} seconds.",
+                    f"Warning: {func.__name__} "
+                    f"function took {elapsed_time:.2f} seconds.",
                     RuntimeWarning
                 )
             return result
@@ -21,5 +22,3 @@ def warn_if_slow(_func=None, *, threshold=1.0):
         return decorator
     else:
         return decorator(_func)
-
-
